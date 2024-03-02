@@ -1,0 +1,35 @@
+{
+  "name": "aaaaaaa",
+  "version": "1.0.0",
+  "description": "abc",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Biswajit04467/aaaaaa.git"
+  },
+  "author": "biswajit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Biswajit04467/aaaaaa/issues"
+  },
+  "homepage": "https://github.com/Biswajit04467/aaaaaa#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "postcss": "^8.4.35",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "sort-by": "^1.2.0"
+  }
+}
