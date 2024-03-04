@@ -19,6 +19,7 @@ const useRestaurantPage=(resId)=>{
 
     return resInfo;
     
+    
 
 }
 

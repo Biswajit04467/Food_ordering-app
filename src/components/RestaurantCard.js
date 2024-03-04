@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { CDN_URL } from "./utils/constants";
+import UserContext2 from "./utils/context/UserContext2";
 
 const RestaurantCard = (props) => {
     const { resData } = props;
 
+    const{loggedInUser}=useContext(UserContext2);
     const { cloudinaryImageId, name, costForTwo, avgRating } = resData.info;
     const { slaString } = resData.info.sla;
 
@@ -20,6 +23,7 @@ const RestaurantCard = (props) => {
             <h4>{costForTwo}</h4>
             <h4>Ratings- {avgRating}★ </h4>
             <h4>{slaString}</h4>
+            <label>{loggedInUser}</label>
         </div>
     );
 }
@@ -30,7 +34,7 @@ export const withOpenLabel = (RestaurantCard) => {
             <div>
 
                 <label>Open</label>
-                <RestaurantCard {...props}/>
+                <RestaurantCard {...props} />
             </div>
 
 

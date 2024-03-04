@@ -1,24 +1,22 @@
 import React, { useState } from 'react'
 import ItemList from './ItemList';
 
-const RestaurantCategory = ({data}) => {
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
 
-    const [showItems,setShowItems]=useState(false);
+    const handleClick = () => {
 
-
-    const handleClick=()=>{
-        console.log("clicked")
-        setShowItems(!showItems);
+        setShowIndex();
     }
+
     return (
         <div>
-            
+
             <div className='bg-gray-100 my-3 p-5 w-6/12 mx-auto '>
                 <div className=' cursor-pointer flex justify-between' onClick={handleClick}>
-                <span className='font-bold text-lg'>{data.title} ({data.itemCards.length})</span>
-                <span>⬇️</span>
+                    <span className='font-bold text-lg'>{data.title} ({data.itemCards.length})</span>
+                    <span>⬇️</span>
                 </div>
-               { showItems && < ItemList items={data.itemCards}/>}
+                {showItems && < ItemList items={data.itemCards} />}
             </div>
         </div>
     )

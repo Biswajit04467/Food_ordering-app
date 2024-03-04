@@ -3,12 +3,15 @@ import { CDN_URL } from './utils/constants';
 import { useParams } from 'react-router-dom';
 import useRestaurantPage from './utils/useRestaurantPage';
 import RestaurantCategory from './RestaurantCategory';
+import { useState } from 'react';
 
 const RestaurantPage = () => {
 
     const { resId } = useParams();
 
     const resInfo = useRestaurantPage(resId);   //custom hook
+
+    const[showIndex,setShowIndex]=useState(null);
 
 
     if (resInfo === null) {
@@ -41,8 +44,13 @@ const RestaurantPage = () => {
             }</h3>
 
             {
-                categorize.map((category)=>(
-                    <RestaurantCategory key={category.card.card.title} data={category.card.card}/>
+                categorize.map((category,index)=>(
+                    <RestaurantCategory 
+                    key={category.card.card.title} 
+                    data={category.card.card} 
+                    showItems={index===showIndex ? true:false}
+                    setShowIndex={()=>{setShowIndex(index)}}
+                    />
                 ))
             }
             

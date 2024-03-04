@@ -1,19 +1,26 @@
-import { useEffect, useState, useOnlineStatus } from "react";
+import { useEffect, useState, useOnlineStatus, useContext } from "react";
 import RestaurantCard, { withOpenLabel } from "./RestaurantCard";
 import resList from "./utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
+import UserContext2 from "./utils/context/UserContext2";
 
 
 const Body = () => {
+
+    const { loggedInUser, setUserName} = useContext(UserContext2);
+    const ABC=useContext(UserContext2);
+    console.log(ABC)
+
+   
+
+
     const [newRestaurants, setnewRestaurants] = useState([]);
     const [copyRestaurants, setcopyRestaurants] = useState([]);
     const [searchText, setsearchText] = useState("");
 
-    const RestaurantOpened = withOpenLabel(RestaurantCard);
-
-
+    const RestaurantOpened = withOpenLabel(RestaurantCard);   //Higher-order component
 
 
     useEffect(() => {
@@ -21,6 +28,7 @@ const Body = () => {
     }, [])
 
     const onlineStatus = useOnlineStatus();  //custom hook
+
 
 
 
@@ -32,9 +40,7 @@ const Body = () => {
         setnewRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setcopyRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-
-
-
+        
 
     }
 
@@ -66,7 +72,7 @@ const Body = () => {
                     }}>search</button>
                 </div>
 
-                <div className="">
+                {/* <div className="">
                     <button className="filter-btn px-3 py-1 ml-3  bg-gray-300" onClick={() => {
                         const newList = newRestaurants.filter((res) => (
                             res.info.avgRating >= 4
@@ -74,6 +80,15 @@ const Body = () => {
                         );
                         setcopyRestaurants(newList);
                     }}>Top Rated Restaurants </button>
+                </div> */}
+
+                <div className="inputBox">
+                    <label>UserName</label>
+                    <input
+                        className="border border-black"
+                        value={loggedInUser}
+                        onChange={(e) => setUserName(e.target.value)}
+                    />
                 </div>
             </div>
             <div className="res-container flex flex-wrap justify-center">
@@ -85,10 +100,10 @@ const Body = () => {
                         <Link to={"/restaurants/" + restuarant.info.id} key={restuarant.info.id}>
 
                             {
-                                restuarant.info.isOpen ? (<RestaurantOpened resData={restuarant} />): (<RestaurantCard resData={restuarant} />)
+                                restuarant.info.isOpen ? (<RestaurantOpened resData={restuarant} />) : (<RestaurantCard resData={restuarant} />)
                             }
 
-                            
+
                             {/* <RestaurantOpened resData={restuarant} /> */}
 
 

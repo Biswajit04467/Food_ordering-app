@@ -18,13 +18,13 @@ const ItemList = ({ items }) => {
                             </div>
                         </div>
 
-                        <div className="w-3/12 ">
+                        <div className="w-3/12  h-32 flex justify-center" >
                             <div className="absolute">
                                 <button className="px-2 bg-black text-white">Add+</button>
                             </div>
 
                             {
-                                item?.card?.info?.imageId !== undefined ? (<img className=" rounded-lg" src={CDN_URL + item.card.info.imageId} alt="item image" />) : null
+                                item?.card?.info?.imageId !== undefined ? (<img className=" rounded-lg max-w-[60%] max-h-[79%] " src={CDN_URL + item.card.info.imageId} alt="item image" />) : null
                             }
                         </div>
                     </div>
