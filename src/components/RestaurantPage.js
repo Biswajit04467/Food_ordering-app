@@ -11,7 +11,7 @@ const RestaurantPage = () => {
 
     const resInfo = useRestaurantPage(resId);   //custom hook
 
-    const[showIndex,setShowIndex]=useState(null);
+    const[showIndex,setShowIndex]=useState(0);
 
 
     if (resInfo === null) {

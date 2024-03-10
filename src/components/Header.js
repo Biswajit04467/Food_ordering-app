@@ -3,19 +3,19 @@ import { LOGO_URL } from "./utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import UserContext2 from "./utils/context/UserContext2";
-// import logo from "./utils/logo.jpeg"
+import { useSelector } from "react-redux";
 
 const Header = () => {
     let btnName = "login";
 
-    const {loggedInUser,setUsername}=useContext(UserContext2);
+    const { loggedInUser, setUsername } = useContext(UserContext2);
     const [newBtn, setnewBtn] = useState(["login"]);
     const onlineStatus = useOnlineStatus();
 
-    // useEffect(()=>{
-    //     setUsername("Biswa")
+    // Subscribing to the store using a selector 
+    const cartItems = useSelector((store) => store.cart.items)
+    console.log(cartItems);
 
-    // },[])
 
     return (
         <div className="flex justify-between  shadow-xl mb-3
@@ -31,7 +31,7 @@ const Header = () => {
                     <li className="px-3"><Link to="/">Home</Link></li>
                     <li className="px-3"><Link to="/about" >About Us</Link></li>
                     <li className="px-3"><Link to="/contact">Contact Us</Link></li>
-                    <li className="px-3">Cart</li>
+                    <li className="px-3 font-bold"><Link to="/cart">Cart-({cartItems.length} items)</Link></li>
                     <button onClick={() => {
                         newBtn === "login" ? setnewBtn("logout") : setnewBtn("login");
                     }} className="px-3">{newBtn}</button>
